@@ -25,5 +25,11 @@ Template.pick_list.events({
                 PickLists.update({_id: pickList._id}, {$set: {ask: _ask, lastUpdated: new Date()}});
             });
         });
+    },
+    "click .addNewPickListItem": function () {
+        var _ticker = $('.newPickListItemSymbol').val();
+        var _dateAdded = $('.newPicklistItemDateAdded').val();
+        var _pickListId = Session.get("selectedPickListId");
+        PickListItems.insert({symbol: _ticker, dateAdded: _dateAdded, pickListId: _pickListId});
     }
 });
