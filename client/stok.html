@@ -3,6 +3,9 @@
 </head>
 
 <body>
+    <header>
+        {{> loginButtons}}
+    </header>
     {{> pick_list}}
 </body>
 
@@ -29,7 +32,7 @@
                                 <td>{{companyName}}</td>
                                 <td>{{symbol}}</td>
                                 <td>{{ask}}</td>
-                                <td>{{lastUpdated}}</td>
+                                <td>{{lastUpdatedFormatted}}</td>
                             </tr>
                         {{/each}}
                     </tbody>

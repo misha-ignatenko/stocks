@@ -12,3 +12,5 @@ aldeed:simple-schema
 underscore
 ajbarry:yahoo-finance
 reactive-var
+jhuenges:highstock
+momentjs:moment
