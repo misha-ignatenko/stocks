@@ -1,0 +1,8 @@
+.sidebar {
+    flex: 0 0 19em;
+    -webkit-flex: 0 0 19em;
+    -ms-flex: 0 0 19em;
+    background-color: rgb(236, 239, 242);
+    border-right: rgb(207, 214, 219) 1px solid;
+    overflow: hidden;
+}

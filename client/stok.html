@@ -1,50 +1,108 @@
 <head>
-    <title>stok</title>
+    <title>misha's stocks app</title>
 </head>
 
 <body>
 <header>
     {{> loginButtons}}
 </header>
-{{> pick_list}}
+<div class="container">
+    {{#if currentUser}}
+        {{> pickListsList}}
+    {{else}}
+        <h1>Please log in.</h1>
+    {{/if}}
+</div>
 </body>
+
+<template name="pickListsList">
+    <div class="btn-group" data-toggle="buttons" role="group">
+        <h2>Available Pick Lists:</h2>
+        {{#each pickLists}}
+            <button class="btn btn-default {{isPickListSelected}} pickListBtn">
+                {{name}}
+            </button>
+        {{/each}}
+    </div>
+    <div class="sidebar">
+        <ul>
+            {{#each pickListItems}}
+                {{> pickListItem}}
+            {{/each}}
+        </ul>
+    </div>
+    <main class="main-panel">
+        {{#with selectedPickListItem}}
+            {{> pickListItemDetail}}
+        {{/with}}
+    </main>
+</template>
+
+
+
+
+
+
+
+
+
+
+
 
 <template name="pick_list">
     <div class="container">
-        <div class="row">
-            <div class="page-header">
-                <h1>Zacks Buy
-                    <small>Database</small>
-                </h1>
-            </div>
-            <div class="span12">
-                <table class="table table-striped table-condensed table-boredered">
-                    <thead>
-                    <tr>
-                        <th>Company Name</th>
-                        <th>Symbol</th>
-                        <th>Latest Ask</th>
-                        <th>Latest update</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {{#each pickLists}}
+        {{#if currentUser}}
+
+
+
+
+            <div class="row">
+                <div class="page-header">
+                    <h1>Zacks Buy
+                        <small>Database</small>
+                    </h1>
+                </div>
+                <div class="span12">
+                    <table class="table table-striped table-condensed table-boredered">
+                        <thead>
                         <tr>
-                            <td>{{companyName}}</td>
-                            <td>{{symbol}}</td>
-                            <td>{{ask}}</td>
-                            <td>{{lastUpdatedFormatted}}</td>
+                            <th>pick list name</th>
+                            <th>Symbol</th>
+                            <th>Latest Ask</th>
+                            <th>Latest update</th>
+                            <th></th>
                         </tr>
-                    {{/each}}
-                    </tbody>
-                </table>
-                <button class="btn btn-primary updatePickListPrices">update asks</button>
-                <br><br>
-                <input type="text" class="newPickListItemSymbol" placeholder="Type stock ticker to add to pick list"/>
-                <input type="date" class="newPicklistItemDateAdded" placeholder="Date added to pick list"/>
-                <button class="btn btn-secondary addNewPickListItem">add pick list item</button>
+                        </thead>
+                        <tbody>
+                        {{#each pickLists}}
+                            <tr>
+                                <td>{{companyName}}</td>
+                                <td>{{symbol}}</td>
+                                <td>{{ask}}</td>
+                                <td>{{lastUpdatedFormatted}}</td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                    <button class="btn btn-primary updatePickListPrices">update asks</button>
+                    <br><br>
+                    <input type="text" class="newPickListItemSymbol"
+                           placeholder="Type stock ticker to add to pick list"/>
+                    <input type="date" class="newPicklistItemDateAdded" placeholder="Date added to pick list"/>
+                    <button class="btn btn-secondary addNewPickListItem">add pick list item</button>
+                </div>
             </div>
-        </div>
+
+
+
+
+
+
+
+
+
+        {{else}}
+            <h1>Please log in.</h1>
+        {{/if}}
     </div>
 </template>

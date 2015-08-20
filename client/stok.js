@@ -1,12 +1,22 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
 Template.pick_list.onCreated(function () {
     this.subscribe("allPickLists");
     this.subscribe("allPickListItems");
 });
 
 Template.pick_list.helpers({
-    pickLists: function () {
-        return PickLists.find();
-    },
     lastUpdatedFormatted: function () {
         var _notFormatted = this.lastUpdated;
         return moment(_notFormatted).format("YYYY-MM-DD h:m:s a");
